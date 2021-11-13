@@ -1,0 +1,26 @@
+[
+    { 
+        "nombre": "Lignosulfonato De Sodio",
+        "cod": 0,
+        "lote": "234-s",
+        "stock": 2347 
+    },
+    { 
+        "nombre": "Propionato de Calcio",
+        "cod": 1,
+        "lote": "234-s",
+        "stock": 2347 
+    },
+    { 
+        "nombre": "AmoxiShot premix ",
+        "cod": 2,
+        "lote": "234-s",
+        "stock": 2347 
+    },
+    { 
+        "nombre": "AmidexDesxtrina",
+        "cod": 3,
+        "lote": "234-s",
+        "stock": 2347 
+    }
+]

@@ -52,7 +52,7 @@ class Contenedor{
         try {
             let dato = await fs.promises.readFile("./MateriasPrimas.json", "utf-8")
             let datopar = JSON.parse(dato)
-            return console.log(datopar)
+            return datopar
             
         } catch (error) {
             throw new Error (`El archivo esta vacio:  ${error}`)
@@ -82,7 +82,7 @@ class Contenedor{
 
 
 
-const prueba1 = new Contenedor ("MateriasPrimas.json")
+//const prueba1 = new Contenedor ("MateriasPrimas.json")
 
 //prueba1.save([
 //    { nombre: "Lignosulfonato De Sodio", cod: 01, lote: "234-s", stock: 2347 },
@@ -96,3 +96,5 @@ const prueba1 = new Contenedor ("MateriasPrimas.json")
 //prueba1.obtenerMp()
 //prueba1.eliminarPorId("HXnXy2S") // completar con un id que mueste en cosola
 //prueba1.eliminarTodo()
+
+module.exports = Contenedor

@@ -1,11 +1,23 @@
 {
   "name": "clase-6",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zille1805/ServerExpres.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/zille1805/ServerExpres/issues"
+  },
+  "homepage": "https://github.com/zille1805/ServerExpres#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
