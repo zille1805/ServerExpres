@@ -18,6 +18,7 @@
   "homepage": "https://github.com/zille1805/ServerExpres#readme",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   }
 }

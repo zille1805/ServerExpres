@@ -21,7 +21,7 @@ class Contenedor{
                 })
                 console.log(` Producto guardado, el id asignado fue ${id}`)
             }
-            await fs.promises.writeFile("./MateriasPrimas.json", JSON.stringify(ListadeMP, null, 2)
+            await fs.promises.writeFile("../express/MateriasPrimas.json", JSON.stringify(ListadeMP, null, 2)
             
             ).then(()=>{
                 return{
@@ -33,13 +33,13 @@ class Contenedor{
             
         } catch (error) {
             let ListadeMP = [];
-            await fs.promises.writeFile("./MateriasPrimas.json", JSON.stringify(ListadeMP, null, 2));
+            await fs.promises.writeFile("../express/MateriasPrimas.json", JSON.stringify(ListadeMP, null, 2));
         }
 
     }
     async obtenerId(id){
         try {
-            let dato = await fs.promises.readFile("./MateriasPrimas.json", "utf-8")
+            let dato = await fs.promises.readFile("../express/MateriasPrimas.json", "utf-8")
             let datopar = JSON.parse(dato)
             let objetoid = datopar.find( a => a.id === id )
             return (console.log( objetoid ))
@@ -48,9 +48,26 @@ class Contenedor{
             throw new Error (`Id no encontrado:  ${error}`)  
         }
     }
+
+    async modificarporId(materiaPrima){
+        let data = await fs.promises.readFile("../express/MateriasPrimas.json", "utf-8");
+        let datoP = JSON.parse(data);
+        let listaFiltrada = datoP.filter( x => x.id !== materiaPrima.id );
+        listaFiltrada.puch(materiaPrima)
+
+
+        try {
+            
+            await fs.promises.writeFile("../express/MateriasPrimas.json", JSON.stringify(listaFiltrada, null, 2));
+            return console.log("Materia Prima Modificada Satisfactoriamente.");
+  
+        } catch (error) {
+            throw new Error (`El id no corresponde a ninguna Materia Prima:  ${error}`)
+        }
+    }
     async obtenerMp(){
         try {
-            let dato = await fs.promises.readFile("./MateriasPrimas.json", "utf-8")
+            let dato = await fs.promises.readFile("../express/MateriasPrimas.json", "utf-8")
             let datopar = JSON.parse(dato)
             return datopar
             
@@ -59,13 +76,14 @@ class Contenedor{
         }
     }
     async eliminarPorId(Id){
-        let data = await fs.promises.readFile("./MateriasPrimas.json", "utf-8");
+        let data = await fs.promises.readFile("../express/MateriasPrimas.json", "utf-8");
         let datoP = JSON.parse(data);
-        let listaFiltrada = datoP.filter( x => x.id === Id );
+        let listaFiltrada = datoP.filter( x => x.id !== Id );
+
 
         try {
-            console.log(listaFiltrada)
-            await fs.promises.writeFile("./MateriasPrimas.json", JSON.stringify(listaFiltrada, null, 2));
+            
+            await fs.promises.writeFile("../express/MateriasPrimas.json", JSON.stringify(listaFiltrada, null, 2));
             return console.log("Materia Prima eliminada satisfactoriamente.");
   
         } catch (error) {
@@ -73,7 +91,7 @@ class Contenedor{
         }
     }
     async eliminarTodo() {
-        await fs.promises.unlink('./MateriasPrimas.json', function (err) {
+        await fs.promises.unlink("../express/MateriasPrimas.json", function (err) {
             if (err) throw err;
             console.log('Archivo eliminado!');
         });
